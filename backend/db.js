@@ -2,10 +2,11 @@ const mongoose = require("mongoose");
 const dotenv = require('dotenv')
 dotenv.config();
 
-const USERNAME = process.env.USERNAME;
-const PASSWORD = process.env.PASSWORD;
+const USERNAME = process.env.DB_USERNAME;
+const PASSWORD = process.env.DB_PASSWORD;
 
-mongoose.connect(`mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.ggmctid.mongodb.net/paytm`)
+mongoose.connect(`mongodb+srv://${USERNAME}:${encodeURIComponent(PASSWORD)}@cluster0.ggmctid.mongodb.net/`)
+
 
 const userSchema = mongoose.Schema({
     username: {
