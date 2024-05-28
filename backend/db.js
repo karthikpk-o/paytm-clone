@@ -5,9 +5,9 @@ dotenv.config();
 const USERNAME = process.env.USERNAME;
 const PASSWORD = process.env.PASSWORD;
 
-mongoose.connect(`mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.ggmctid.mongodb.net/`)
+mongoose.connect(`mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.ggmctid.mongodb.net/paytm`)
 
-const userSchema = mongoose.schema({
+const userSchema = mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -36,7 +36,22 @@ const userSchema = mongoose.schema({
     }
 });
 
+const accountSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        require: true
+    },
+    balance: {
+        type: Number,
+        required: true
+    }
+});
+
+const Account = mongoose.model('Account', accountSchema)
 const User = mongoose.model('User', userSchema);
+
 module.exports = {
-    User
+    User,
+    Account,
 };
