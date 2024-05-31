@@ -1,5 +1,6 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import { Signup } from "./pages/Signup"
+import { Signin } from "./pages/Signin"
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Signup/>}/>
+        <Route path="/sigin" element={<Signin/>}/>
       </Routes>
     </BrowserRouter>
   )
@@ -15,7 +17,7 @@ function App() {
 export default App
 
 /*
-<Route path="/sigin" element={<Signin/>}/>
+
 <Route path="/dashboard" element={<Dashboard/>}/>
 <Route path="/send" element={<SendMoney/>}/>
 */
